@@ -40,4 +40,9 @@ source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
 
 mkdir -p $RBENV_ROOT/cache
 
-rbenv install -v `cat $OPENSHIFT_REPO_DIR/.ruby-version`
+# Necessary because of compile bug in Ruby on Fedora / Redhat
+# https://github.com/sstephenson/ruby-build/wiki#make-error-for-200-p247-and-lower-on-fedorared-hat
+curl -fsSL https://bugs.ruby-lang.org/projects/ruby-trunk/repository/revisions/41808/diff?format=diff | rbenv install --patch `cat $OPENSHIFT_REPO_DIR/.ruby-version`
+
+
+# rbenv install -v `cat $OPENSHIFT_REPO_DIR/.ruby-version`
