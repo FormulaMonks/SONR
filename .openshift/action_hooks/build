@@ -24,7 +24,7 @@ else
 fi
 
 # Install or update ruby-build
-if [ -e $$RUBYBUILD_DIR ]; then
+if [ -d $RUBYBUILD_DIR ]; then
     echo "ruby-build has already been installed. Updating it..."
     cd $RUBYBUILD_DIR
     git pull origin $RUBYBUILD_VERSION
@@ -38,4 +38,6 @@ fi
 
 source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
 
-rbenv install `cat $OPENSHIFT_REPO_DIR/.ruby-version`
+mkdir -p $RBENV_ROOT/cache
+
+rbenv install -v `cat $OPENSHIFT_REPO_DIR/.ruby-version`
