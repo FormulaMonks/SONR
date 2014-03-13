@@ -10,7 +10,7 @@ echo "Running build script..."
 if [ -d $RBENV_DIR ]; then
     echo "RBENV has already been installed. Updating it..."
     cd $RBENV_DIR
-    git pull master
+    git pull origin aster
     git checkout $RBENV_VERSION
 else
     echo "Installing RBENV..."
