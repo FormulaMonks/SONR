@@ -5,5 +5,5 @@
 #nohup $OPENSHIFT_REPO_DIR/diy/testrubyserver.rb $OPENSHIFT_DIY_IP $OPENSHIFT_REPO_DIR/diy > $OPENSHIFT_DIY_DIR/logs/server.log 2>&1 &
 
 
-export PATH="${OPENSHIFT_BUILD_DEPENDENCIES_DIR}.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
+nohup $OPENSHIFT_REPO_DIR/diy/testrubyserver.rb $OPENSHIFT_DIY_IP $OPENSHIFT_REPO_DIR/diy > $OPENSHIFT_DIY_DIR/logs/server.log 2>&1 &

@@ -10,7 +10,7 @@ echo "Running build script..."
 if [ -d $RBENV_DIR ]; then
     echo "RBENV has already been installed. Updating it..."
     cd $RBENV_DIR
-    git pull
+    git pull master
     git checkout $RBENV_VERSION
 else
     echo "Installing RBENV..."
@@ -20,6 +20,4 @@ else
 fi
 
 
-
-export PATH="${OPENSHIFT_BUILD_DEPENDENCIES_DIR}.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv

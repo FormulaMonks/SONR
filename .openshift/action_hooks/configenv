@@ -1,0 +1,7 @@
+# This should be sourced from other scripts, not called directly.
+
+echo "About to configure environment variables"
+
+export RBENV_ROOT="${OPENSHIFT_BUILD_DEPENDENCIES_DIR}.rbenv"
+export PATH="$RBENV_ROOT/bin:$PATH"
+export PATH="$RBENV_ROOT/shims:$PATH"
