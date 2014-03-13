@@ -36,5 +36,6 @@ else
     git checkout $RUBYBUILD_VERSION
 fi
 
-
 source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
+
+rbenv install `cat $OPENSHIFT_REPO_DIR/.ruby-version`
