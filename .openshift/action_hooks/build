@@ -20,3 +20,6 @@ else
 fi
 
 
+
+export PATH="${OPENSHIFT_BUILD_DEPENDENCIES_DIR}.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
