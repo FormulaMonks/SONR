@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-RBENV_VERSION="v0.4.0"
+RBENV_VERSION="master"
 RBENV_DIR="${OPENSHIFT_BUILD_DEPENDENCIES_DIR}.rbenv"
 RBENV_GIT_URL="https://github.com/sstephenson/rbenv.git"
 
