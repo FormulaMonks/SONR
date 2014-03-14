@@ -13,7 +13,7 @@ NGINX_FILE="nginx-1.4.6"
 NGINX_EXT=".tar.gz"
 
 PCRE_URL="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/"
-PCRE_FILE="pcre-8.31"
+PCRE_FILE="pcre-8.34"
 PCRE_EXT=".tar.bz2"
 
 echo "Running build script..."
@@ -43,6 +43,9 @@ else
     cd $RUBYBUILD_DIR
     git checkout $RUBYBUILD_VERSION
 fi
+
+# We've got no if statements for a while, so let's exit if there's an error.
+set -e
 
 source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
 
