@@ -87,11 +87,11 @@ if [ ! -e "${NGINX_DIR}sbin/nginx" ]; then
 fi
 
 # Create nginx config file (do this every time)
-sed -e "s/NGINXDIR/${OPENSHIFT_DATA_DIR}nginx/g" \
-    -e "s/UNICORNDIR/${OPENSHIFT_DATA_DIR}unicorn/g" \
-    -e "s/OPENSHIFT_APP_DNS/${OPENSHIFT_APP_DNS/g" \
-    -e "s/OPENSHIFT_REPO_DIR/${OPENSHIFT_REPO_DIR/g" \
-    -e "s/OPENSHIFT_DIY_PORT/${OPENSHIFT_DIY_PORT}/g" \
+sed -e "s|NGINXDIR|${OPENSHIFT_DATA_DIR}nginx|g" \
+    -e "s|UNICORNDIR|${OPENSHIFT_DATA_DIR}unicorn|g" \
+    -e "s|OPENSHIFT_APP_DNS|${OPENSHIFT_APP_DNS|g" \
+    -e "s|OPENSHIFT_REPO_DIR|${OPENSHIFT_REPO_DIR|g" \
+    -e "s|OPENSHIFT_DIY_PORT|${OPENSHIFT_DIY_PORT}|g" \
     <${OPENSHIFT_REPO_DIR}nginx.conf >${NGINX_DIR}conf/nginx.conf
 
 
