@@ -55,7 +55,7 @@ rbenv install -v `cat $OPENSHIFT_REPO_DIR/.ruby-version`
 
 # Install PCRE engine for nginx
 cd $OPENSHIFT_TMP_DIR
-wget ${PCRE_URL}{$PCRE_FILE}${PCRE_EXT}
+wget ${PCRE_URL}${PCRE_FILE}${PCRE_EXT}
 tar jxf ${PCRE_FILE}${PCRE_EXT}
 
 
