@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-RBENV_VERSION="master"
+RBENV_VERSION="v0.4.0"
 RBENV_DIR="${OPENSHIFT_BUILD_DEPENDENCIES_DIR}.rbenv/"
 RBENV_GIT_URL="https://github.com/sstephenson/rbenv.git"
 
 RUBYBUILD_GIT_URL="https://github.com/sstephenson/ruby-build.git"
-RUBYBUILD_VERSION="master"
+RUBYBUILD_VERSION="v20140225"
 RUBYBUILD_DIR="$RBENV_DIR/plugins/ruby-build/"
 
 NGINX_URL="http://nginx.org/download/"
