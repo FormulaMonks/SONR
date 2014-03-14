@@ -8,6 +8,14 @@ RUBYBUILD_GIT_URL="https://github.com/sstephenson/ruby-build.git"
 RUBYBUILD_VERSION="master"
 RUBYBUILD_DIR="$RBENV_DIR/plugins/ruby-build"
 
+NGINX_URL="http://nginx.org/download/"
+NGINX_FILE="nginx-1.4.6"
+NGINX_EXT=".tar.gz"
+
+PCRE_URL="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/"
+PCRE_FILE="pcre-8.31"
+PCRE_EXT="tar.bz2"
+
 echo "Running build script..."
 
 # Install or update RBENV
@@ -41,3 +49,19 @@ source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
 mkdir -p $RBENV_ROOT/cache
 
 rbenv install -v `cat $OPENSHIFT_REPO_DIR/.ruby-version`
+
+
+# Install nginx
+
+# Install PCRE engine for nginx
+cd $OPENSHIFT_TMP_DIR
+wget ${PCRE_URL}{$PCRE_FILE}${PCRE_EXT}
+tar jxf ${PCRE_FILE}${PCRE_EXT}
+
+
+cd $OPENSHIFT_TMP_DIR
+wget ${NGINX_URL}${NGINX_FILE}${NGINX_EXT}
+tar xvzf ${NGINX_FILE}${NGINX_EXT}
+cd $NGINX_FILE
+./configure --prefix=$OPENSHIFT_DATA_DIR --with-pcre=$OPENSHIFT_TMP_DIR/${PCRE_FILE}
+make install
