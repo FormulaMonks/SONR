@@ -51,22 +51,29 @@ source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
 mkdir -p $RBENV_ROOT/cache
 
 rbenv install -v `cat $OPENSHIFT_REPO_DIR/.ruby-version`
+rm -rf ${OPENSHIFT_TMP_DIR}ruby-build*
 
 
 # Install nginx
+if [ ! -e "$OPENSHIFT_DATA_DIR/sbin/nginx" ]; then
+    echo "Installing nginx..."
+    # We've got no if statements for a while, so let's exit if there's an error.
+    set -e
 
-# We've got no if statements for a while, so let's exit if there's an error.
-set -e
+    # Install PCRE engine for nginx
+    cd $OPENSHIFT_TMP_DIR
+    wget ${PCRE_URL}${PCRE_FILE}${PCRE_EXT}
+    tar xjf ${PCRE_FILE}${PCRE_EXT}
 
-# Install PCRE engine for nginx
-cd $OPENSHIFT_TMP_DIR
-wget ${PCRE_URL}${PCRE_FILE}${PCRE_EXT}
-tar jxf ${PCRE_FILE}${PCRE_EXT}
+    cd $OPENSHIFT_TMP_DIR
+    wget ${NGINX_URL}${NGINX_FILE}${NGINX_EXT}
+    tar xzf ${NGINX_FILE}${NGINX_EXT}
+    cd $NGINX_FILE
+    ./configure --prefix=$OPENSHIFT_DATA_DIR --with-pcre=$OPENSHIFT_TMP_DIR/${PCRE_FILE}
+    make install
 
-
-cd $OPENSHIFT_TMP_DIR
-wget ${NGINX_URL}${NGINX_FILE}${NGINX_EXT}
-tar xvzf ${NGINX_FILE}${NGINX_EXT}
-cd $NGINX_FILE
-./configure --prefix=$OPENSHIFT_DATA_DIR --with-pcre=$OPENSHIFT_TMP_DIR/${PCRE_FILE}
-make install
+    rm ${OPENSHIFT_TMP_DIR}${NGINX_FILE}${NGINX_EXT}
+    rm ${OPENSHIFT_TMP_DIR}${PCRE_FILE}${PCRE_EXT}
+    rm -rf ${OPENSHIFT_TMP_DIR}${NGINX_FILE}
+    rm -rf ${OPENSHIFT_TMP_DIR}${PCRE_FILE}
+fi
