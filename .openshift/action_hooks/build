@@ -55,11 +55,11 @@ mkdir -p $RBENV_ROOT/cache
 
 # Install Correct Ruby version into rbenv if necessary
 if rbenv versions | grep -q `cat $OPENSHIFT_REPO_DIR/.ruby-version` ; then
+    echo "We already have Ruby `cat $OPENSHIFT_REPO_DIR/.ruby-version` installed into rbenv. Skipping..."
+else
     echo "Installing Ruby `cat $OPENSHIFT_REPO_DIR/.ruby-version` into rbenv..."
     rbenv install -v `cat $OPENSHIFT_REPO_DIR/.ruby-version`
     rm -rf ${OPENSHIFT_TMP_DIR}ruby-build*
-else
-    echo "We already have Ruby `cat $OPENSHIFT_REPO_DIR/.ruby-version` installed into rbenv. Skipping..."
 fi
 
 
@@ -92,7 +92,7 @@ if [ ! -e "${NGINX_DIR}sbin/nginx" ]; then
     #rm -rf ${OPENSHIFT_TMP_DIR}${PCRE_FILE}
 fi
 
-# Create nginx config file (do this every time)
+# Create nginx config file (do this every time; environment variables may have changed).
 sed -e "s|NGINXDIR|${NGINX_DIR}|g" \
     -e "s|UNICORNDIR|${UNICORN_DIR}|g" \
     -e "s|OPENSHIFT_APP_DNS|${OPENSHIFT_APP_DNS}|g" \
