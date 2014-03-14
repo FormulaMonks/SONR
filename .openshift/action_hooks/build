@@ -87,8 +87,8 @@ if [ ! -e "${NGINX_DIR}sbin/nginx" ]; then
 fi
 
 # Create nginx config file (do this every time)
-sed -e "s|NGINXDIR|${OPENSHIFT_DATA_DIR}nginx|g" \
-    -e "s|UNICORNDIR|${OPENSHIFT_DATA_DIR}unicorn|g" \
+sed -e "s|NGINXDIR|${NGINX_DIR}|g" \
+    -e "s|UNICORNDIR|${UNICORN_DIR}|g" \
     -e "s|OPENSHIFT_APP_DNS|${OPENSHIFT_APP_DNS}|g" \
     -e "s|OPENSHIFT_REPO_DIR|${OPENSHIFT_REPO_DIR}|g" \
     -e "s|OPENSHIFT_DIY_PORT|${OPENSHIFT_DIY_PORT}|g" \
