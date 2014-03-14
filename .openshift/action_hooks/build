@@ -106,3 +106,10 @@ sed -e "s|NGINXDIR|${NGINX_DIR}|g" \
 mkdir -p ${UNICORN_DIR}tmp/sockets
 mkdir -p ${UNICORN_DIR}tmp/pids
 mkdir -p ${UNICORN_DIR}log
+
+echo "Install Gems..."
+ruby --version
+gem install bundler
+cd $OPENSHIFT_REPO_DIR
+bundle install
+
