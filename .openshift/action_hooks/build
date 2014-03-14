@@ -77,11 +77,23 @@ if [ ! -e "${NGINX_DIR}sbin/nginx" ]; then
     make install
     make clean
 
+    mkdir -p ${NGINX_DIR}run
+
+    # TODO: Verify that "make clean" removes these files and folders:
     #rm ${OPENSHIFT_TMP_DIR}${NGINX_FILE}${NGINX_EXT}
     #rm ${OPENSHIFT_TMP_DIR}${PCRE_FILE}${PCRE_EXT}
     #rm -rf ${OPENSHIFT_TMP_DIR}${NGINX_FILE}
     #rm -rf ${OPENSHIFT_TMP_DIR}${PCRE_FILE}
 fi
+
+# Create nginx config file (do this every time)
+sed -e 's/NGINXDIR/${OPENSHIFT_DATA_DIR}nginx/g' \
+    -e 's/UNICORNDIR/${OPENSHIFT_DATA_DIR}unicorn/g' \
+    -e 's/OPENSHIFT_APP_DNS/${OPENSHIFT_APP_DNS/g' \
+    -e 's/OPENSHIFT_REPO_DIR/${OPENSHIFT_REPO_DIR/g' \
+    -e 's/OPENSHIFT_DIY_PORT/${OPENSHIFT_DIY_PORT}/g' \
+    <${OPENSHIFT_REPO_DIR}nginx.conf >${NGINX_DIR}conf/nginx.conf
+
 
 # Configure Unicorn Directories
 mkdir -p ${UNICORN_DIR}tmp/sockets
