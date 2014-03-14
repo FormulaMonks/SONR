@@ -14,7 +14,7 @@ NGINX_EXT=".tar.gz"
 
 PCRE_URL="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/"
 PCRE_FILE="pcre-8.31"
-PCRE_EXT="tar.bz2"
+PCRE_EXT=".tar.bz2"
 
 echo "Running build script..."
 
