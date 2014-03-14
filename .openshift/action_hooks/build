@@ -44,8 +44,7 @@ else
     git checkout $RUBYBUILD_VERSION
 fi
 
-# We've got no if statements for a while, so let's exit if there's an error.
-set -e
+
 
 source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
 
@@ -55,6 +54,9 @@ rbenv install -v `cat $OPENSHIFT_REPO_DIR/.ruby-version`
 
 
 # Install nginx
+
+# We've got no if statements for a while, so let's exit if there's an error.
+set -e
 
 # Install PCRE engine for nginx
 cd $OPENSHIFT_TMP_DIR
