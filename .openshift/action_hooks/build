@@ -1,20 +1,23 @@
 #!/usr/bin/env bash
 
 RBENV_VERSION="master"
-RBENV_DIR="${OPENSHIFT_BUILD_DEPENDENCIES_DIR}.rbenv"
+RBENV_DIR="${OPENSHIFT_BUILD_DEPENDENCIES_DIR}.rbenv/"
 RBENV_GIT_URL="https://github.com/sstephenson/rbenv.git"
 
 RUBYBUILD_GIT_URL="https://github.com/sstephenson/ruby-build.git"
 RUBYBUILD_VERSION="master"
-RUBYBUILD_DIR="$RBENV_DIR/plugins/ruby-build"
+RUBYBUILD_DIR="$RBENV_DIR/plugins/ruby-build/"
 
 NGINX_URL="http://nginx.org/download/"
 NGINX_FILE="nginx-1.4.6"
 NGINX_EXT=".tar.gz"
+NGINX_DIR="${OPENSHIFT_DATA_DIR}nginx/"
 
 PCRE_URL="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/"
 PCRE_FILE="pcre-8.34"
 PCRE_EXT=".tar.bz2"
+
+UNICORN_DIR="${OPENSHIFT_DATA_DIR}/unicorn/"
 
 echo "Running build script..."
 
@@ -55,7 +58,8 @@ rm -rf ${OPENSHIFT_TMP_DIR}ruby-build*
 
 
 # Install nginx
-if [ ! -e "$OPENSHIFT_DATA_DIR/sbin/nginx" ]; then
+# Inspired by https://www.openshift.com/blogs/lightweight-http-serving-using-nginx-on-openshift
+if [ ! -e "${NGINX_DIR}sbin/nginx" ]; then
     echo "Installing nginx..."
     # We've got no if statements for a while, so let's exit if there's an error.
     set -e
@@ -69,11 +73,17 @@ if [ ! -e "$OPENSHIFT_DATA_DIR/sbin/nginx" ]; then
     wget ${NGINX_URL}${NGINX_FILE}${NGINX_EXT}
     tar xzf ${NGINX_FILE}${NGINX_EXT}
     cd $NGINX_FILE
-    ./configure --prefix=$OPENSHIFT_DATA_DIR --with-pcre=$OPENSHIFT_TMP_DIR/${PCRE_FILE}
+    ./configure --prefix=$NGINX_DIR --with-pcre=$OPENSHIFT_TMP_DIR/${PCRE_FILE}
     make install
+    make clean
 
-    rm ${OPENSHIFT_TMP_DIR}${NGINX_FILE}${NGINX_EXT}
-    rm ${OPENSHIFT_TMP_DIR}${PCRE_FILE}${PCRE_EXT}
-    rm -rf ${OPENSHIFT_TMP_DIR}${NGINX_FILE}
-    rm -rf ${OPENSHIFT_TMP_DIR}${PCRE_FILE}
+    #rm ${OPENSHIFT_TMP_DIR}${NGINX_FILE}${NGINX_EXT}
+    #rm ${OPENSHIFT_TMP_DIR}${PCRE_FILE}${PCRE_EXT}
+    #rm -rf ${OPENSHIFT_TMP_DIR}${NGINX_FILE}
+    #rm -rf ${OPENSHIFT_TMP_DIR}${PCRE_FILE}
 fi
+
+# Configure Unicorn Directories
+mkdir -p ${UNICORN_DIR}tmp/sockets
+mkdir -p ${UNICORN_DIR}tmp/pids
+mkdir -p ${UNICORN_DIR}log
