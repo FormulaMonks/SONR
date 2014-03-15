@@ -5,6 +5,5 @@ source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
 echo "Current ruby version: `ruby --version`"
 
 
-
 echo "Starting Unicorn..."
 ruby `gem which unicorn` -c ${OPENSHIFT_REPO_DIR}unicorn.rb -E production -D
