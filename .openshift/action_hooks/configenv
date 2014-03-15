@@ -4,8 +4,7 @@ echo "About to configure environment variables"
 
 export RBENV_ROOT="${OPENSHIFT_BUILD_DEPENDENCIES_DIR}.rbenv"
 export PATH="$RBENV_ROOT/bin:$PATH"
-export PATH="$RBENV_ROOT/shims:$PATH"
-
+eval "$(rbenv init -)"
 rbenv rehash
 
 rbenv global `cat $OPENSHIFT_REPO_DIR/.ruby-version`
