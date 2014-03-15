@@ -1,9 +1,10 @@
 #!/bin/bash
-# The logic to start up your application should be put in this
+
+set -e
 
 source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
-echo "Current ruby version: `ruby --version`"
+echo "Current Ruby version: `ruby --version`"
 
 
 echo "Starting Unicorn..."
-ruby `gem which unicorn` -c ${OPENSHIFT_REPO_DIR}unicorn.rb -E production -D
+unicorn -c ${OPENSHIFT_REPO_DIR}unicorn.rb -E production -D
