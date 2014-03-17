@@ -111,7 +111,7 @@ mkdir -p ${UNICORN_DIR}pids
 mkdir -p ${UNICORN_DIR}log
 
 echo "Install Gems..."
-if gem list | grep -q "bundler ; then
+if gem list | grep -q "bundler" ; then
     echo "Bundler already installed"
 else
     gem install bundler
