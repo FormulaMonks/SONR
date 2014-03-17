@@ -3,12 +3,10 @@
 set -e
 
 source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
-echo "Current Ruby version: `ruby --version`"
-
 
 echo "Starting Unicorn..."
 unicorn -c ${OPENSHIFT_REPO_DIR}unicorn.rb -E production -D
 
 
 echo "Starting nginx..."
-/bin/sh "${OPENSHIFT_REPO_DIR}nginx.startscript start"
+/bin/sh ${OPENSHIFT_REPO_DIR}nginx.startscript start

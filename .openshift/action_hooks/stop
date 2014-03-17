@@ -6,7 +6,6 @@ UPIDFILE="${UNICORN_DIR}pids/unicorn.pid"
 
 
 source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
-echo "Current Ruby version: `ruby --version`"
 
 echo "Stopping Unicorn..."
 if [ -e $UPIDFILE ]; then
