@@ -5,6 +5,7 @@ configure do
     REDIS_HOST = ENV['OPENSHIFT_REDIS_HOST']
     REDIS_PORT = ENV['OPENSHIFT_REDIS_PORT']
     REDIS_PW = ENV['REDIS_PASSWORD']
+    puts "Connecting to redis on host #{REDIS_HOST}, port #{REDIS_PORT}."
     REDIS = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT, :password => REDIS_PW)
 end
 
