@@ -1,7 +1,13 @@
 require 'sinatra'
 require 'redis'
 
-
+after_fork do |server, worker|
+    REDIS_HOST = ENV['OPENSHIFT_REDIS_HOST']
+    REDIS_PORT = ENV['OPENSHIFT_REDIS_PORT']
+    REDIS_PW = ENV['REDIS_PASSWORD']
+    puts "Connecting to redis on host #{REDIS_HOST}, port #{REDIS_PORT}."
+    REDIS = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT, :password => REDIS_PW)
+end
 
 get '/' do
   "the time where this server lives is #{Time.now}
@@ -15,13 +21,8 @@ get '/agent' do
 end
 
 get '/count' do
-  REDIS_HOST = ENV['OPENSHIFT_REDIS_HOST']
-  REDIS_PORT = ENV['OPENSHIFT_REDIS_PORT']
-  REDIS_PW = ENV['REDIS_PASSWORD']
-  puts "Connecting to redis on host #{REDIS_HOST}, port #{REDIS_PORT}."
-  REDIS = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT, :password => REDIS_PW)
-  REDIS.incr("count")
-  count = REDIS.get("count").to_s
-  "This page has been loaded #{count} times<br />
-  Return to <a href=\"/\">top</a>"
+    REDIS.incr("count")
+    count = REDIS.get("count").to_s
+    "This page has been loaded #{count} times<br />
+    Return to <a href=\"/\">top</a>"
 end
