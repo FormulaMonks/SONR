@@ -8,7 +8,6 @@ configure do
     REDIS = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT, :password => REDIS_PW)
 end
 
-
 get '/' do
   "the time where this server lives is #{Time.now}
     <br /><br />check out your <a href=\"/agent\">user_agent</a>
