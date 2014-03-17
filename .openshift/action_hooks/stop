@@ -1,10 +1,18 @@
 #!/bin/bash
-source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-# The logic to stop your application should be put in this script.
-if [ -z "$(ps -ef | grep testrubyserver.rb | grep -v grep)" ]
-then
-    client_result "Application is already stopped"
-else
-    kill `ps -ef | grep testrubyserver.rb | grep -v grep | awk '{ print $2 }'` > /dev/null 2>&1
-fi
+set -e
+
+UNICORN_DIR="${OPENSHIFT_DATA_DIR}/unicorn/"
+
+
+
+source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
+echo "Current Ruby version: `ruby --version`"
+
+echo "Stopping Unicorn..."
+cat "${UNICORN_DIR}pids/unicorn.pid" | xargs kill -QUIT
+rm -rf "${UNICORN_DIR}sockets/unicorn.socket"
+rm -rf "${UNICORN_DIR}pids/unicorn.pid"
+
+echo "Stopping nginx..."
+${OPENSHIFT_REPO_DIR}nginx.startscript stop

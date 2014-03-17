@@ -79,7 +79,7 @@ if [ ! -e "${NGINX_DIR}sbin/nginx" ]; then
     wget ${NGINX_URL}${NGINX_FILE}${NGINX_EXT}
     tar xzf ${NGINX_FILE}${NGINX_EXT}
     cd $NGINX_FILE
-    ./configure --prefix=$NGINX_DIR --with-pcre=$OPENSHIFT_TMP_DIR/${PCRE_FILE}
+    ./configure --prefix=$NGINX_DIR --with-pcre=${OPENSHIFT_TMP_DIR}${PCRE_FILE}
     make install
     make clean
 
@@ -101,15 +101,21 @@ sed -e "s|NGINXDIR|${NGINX_DIR}|g" \
     -e "s|OPENSHIFT_DIY_IP|${OPENSHIFT_DIY_IP}|g" \
     <${OPENSHIFT_REPO_DIR}nginx.conf >${NGINX_DIR}conf/nginx.conf
 
+# Create nginx Directories
+mkdir -p ${NGINX_DIR}lock/
+
 
 # Configure Unicorn Directories
-mkdir -p ${UNICORN_DIR}tmp/sockets
-mkdir -p ${UNICORN_DIR}tmp/pids
+mkdir -p ${UNICORN_DIR}sockets
+mkdir -p ${UNICORN_DIR}pids
 mkdir -p ${UNICORN_DIR}log
 
 echo "Install Gems..."
-ruby --version
-gem install bundler
+if gem list | grep -q "bundler ; then
+    echo "Bundler already installed"
+else
+    gem install bundler
+fi
 cd $OPENSHIFT_REPO_DIR
 bundle install
 
