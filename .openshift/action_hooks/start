@@ -11,4 +11,4 @@ unicorn -c ${OPENSHIFT_REPO_DIR}unicorn.rb -E production -D
 
 
 echo "Starting nginx..."
-bash "${OPENSHIFT_REPO_DIR}nginx.startscript start"
+/bin/sh "${OPENSHIFT_REPO_DIR}nginx.startscript start"

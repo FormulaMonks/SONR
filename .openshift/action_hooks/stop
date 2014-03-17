@@ -17,4 +17,4 @@ rm -rf "${UNICORN_DIR}sockets/unicorn.socket"
 rm -rf "${UNICORN_DIR}pids/unicorn.pid"
 
 echo "Stopping nginx..."
-${OPENSHIFT_REPO_DIR}nginx.startscript stop
+/bin/sh ${OPENSHIFT_REPO_DIR}nginx.startscript stop
