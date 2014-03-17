@@ -13,7 +13,7 @@ rbenv rehash
 rbenv global `cat $OPENSHIFT_REPO_DIR/.ruby-version`
 
 # Configure Redis URL
-${REDIS_PASSWORD:?"You need to install the Redis cartridge (password)"}
-${OPENSHIFT_REDIS_PORT:?"You need to install the Redis cartridge (port)"}
-${OPENSHIFT_REDIS_HOST:?"You need to install the Redis cartridge (host)"}
+: ${REDIS_PASSWORD:?"You need to install the Redis cartridge (password)"}
+: ${OPENSHIFT_REDIS_PORT:?"You need to install the Redis cartridge (port)"}
+: ${OPENSHIFT_REDIS_HOST:?"You need to install the Redis cartridge (host)"}
 export REDIS_URL="redis://:${REDIS_PASSWORD}@${OPENSHIFT_REDIS_HOST}:${OPENSHIFT_REDIS_PORT}/0"
