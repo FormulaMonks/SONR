@@ -1,14 +1,12 @@
 require 'sinatra'
 require 'redis'
 
-
 configure :production do
-  puts "About to configure redis with #{ENV[REDIS_URL]}"
-  REDIS = Redis.new()
-  puts "Redis is configured"
+    REDIS_HOST = ENV['OPENSHIFT_REDIS_HOST']
+    REDIS_PORT = ENV['OPENSHIFT_REDIS_PORT']
+    REDIS_PW = ENV['REDIS_PASSWORD']
+    REDIS = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT, :password => REDIS_PW)
 end
-
-
 
 
 get '/' do
