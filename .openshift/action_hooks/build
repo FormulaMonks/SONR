@@ -63,6 +63,7 @@ else
 fi
 
 
+
 # Install nginx
 # Inspired by https://www.openshift.com/blogs/lightweight-http-serving-using-nginx-on-openshift
 if [ ! -e "${NGINX_DIR}sbin/nginx" ]; then
