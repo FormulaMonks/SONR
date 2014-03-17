@@ -2,7 +2,7 @@
 
 An OpenShift QuickStart for Ruby + Sinatra + Nginx + Redis
 
-By John Mark Schofield [mailto:jms@schof.org](jms@schof.org) for Citrusbyte, LLC.
+By John Mark Schofield <a href="mailto:jms@schof.org">jms@schof.org</a> for [Citrusbyte, LLC](https://citrusbyte.com/).
 
 Copyright 2014 Citrusbyte, LLC.
 
