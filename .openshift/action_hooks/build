@@ -110,6 +110,7 @@ mkdir -p ${UNICORN_DIR}pids
 mkdir -p ${UNICORN_DIR}log
 
 echo "Install Gems..."
+source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
 if gem list | grep -q "bundler" ; then
     echo "Bundler already installed"
 else
