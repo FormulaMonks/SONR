@@ -84,13 +84,10 @@ if [ ! -e "${NGINX_DIR}sbin/nginx" ]; then
     make install
     make clean
 
-    mkdir -p ${NGINX_DIR}run
-
-    # TODO: Verify that "make clean" removes these files and folders:
-    #rm ${OPENSHIFT_TMP_DIR}${NGINX_FILE}${NGINX_EXT}
-    #rm ${OPENSHIFT_TMP_DIR}${PCRE_FILE}${PCRE_EXT}
-    #rm -rf ${OPENSHIFT_TMP_DIR}${NGINX_FILE}
-    #rm -rf ${OPENSHIFT_TMP_DIR}${PCRE_FILE}
+    rm ${OPENSHIFT_TMP_DIR}${NGINX_FILE}${NGINX_EXT}
+    rm ${OPENSHIFT_TMP_DIR}${PCRE_FILE}${PCRE_EXT}
+    rm -rf ${OPENSHIFT_TMP_DIR}${NGINX_FILE}
+    rm -rf ${OPENSHIFT_TMP_DIR}${PCRE_FILE}
 fi
 
 # Create nginx config file (do this every time; environment variables may have changed).
