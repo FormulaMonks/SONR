@@ -103,6 +103,7 @@ sed -e "s|NGINXDIR|${NGINX_DIR}|g" \
 
 # Create nginx Directories
 mkdir -p ${NGINX_DIR}lock/
+mkdir -p ${NGINX_DIR}run/
 
 
 # Configure Unicorn Directories
