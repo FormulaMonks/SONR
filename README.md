@@ -2,7 +2,7 @@
 
 An OpenShift QuickStart for Ruby + Sinatra + Nginx + Redis
 
-By John Mark Schofield <a href="mailto:jms@schof.org">jms@schof.org</a> for [Citrusbyte, LLC](https://citrusbyte.com/).
+By John Mark Schofield (<a href="mailto:jms@schof.org">jms@schof.org</a>) for [Citrusbyte, LLC](https://citrusbyte.com/).
 
 Copyright 2014 Citrusbyte, LLC.
 
@@ -71,7 +71,7 @@ Enter your RedHat OpenShift username and password. Enter "Yes" to generate a tok
 Now you're ready to create your application and add the Redis cartridge!
 
 ```
-rhc app create APPNAME diy-1.0 http://cartreflect-claytondev.rhcloud.com/reflect?github=smarterclayton/openshift-redis-cart --from-code https://github.com/citrusbyte/SONR.git
+rhc app create APPNAME diy-0.1 http://cartreflect-claytondev.rhcloud.com/reflect?github=smarterclayton/openshift-redis-cart --from-code https://github.com/citrusbyte/SONR.git
 cd APPNAME
 ```
 
