@@ -5,7 +5,7 @@ set -e
 source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
 
 echo "Starting Unicorn..."
-unicorn -c ${OPENSHIFT_REPO_DIR}unicorn.rb -E  -D
+unicorn -c ${OPENSHIFT_REPO_DIR}unicorn.rb -E development -D
 
 
 /bin/sh ${OPENSHIFT_REPO_DIR}nginx.startscript start
