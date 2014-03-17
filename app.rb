@@ -1,12 +1,6 @@
 require 'sinatra'
 require 'redis'
 
-REDIS_HOST = ENV['OPENSHIFT_REDIS_HOST']
-REDIS_PORT = ENV['OPENSHIFT_REDIS_PORT']
-REDIS_PW = ENV['REDIS_PASSWORD']
-puts "Connecting to redis on host #{REDIS_HOST}, port #{REDIS_PORT}."
-REDIS = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT, :password => REDIS_PW)
-
 get '/' do
   "the time where this server lives is #{Time.now}
     <br /><br />check out your <a href=\"/agent\">user_agent</a>
@@ -19,6 +13,7 @@ get '/agent' do
 end
 
 get '/count' do
+    REDIS = Redis.new()
     REDIS.incr("count")
     count = REDIS.get("count").to_s
     "This page has been loaded #{count} times<br />
