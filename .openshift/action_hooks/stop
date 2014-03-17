@@ -1,16 +1,18 @@
 #!/bin/bash
 
-set -e
 
 UNICORN_DIR="${OPENSHIFT_DATA_DIR}/unicorn/"
-
+UPIDFILE="${UNICORN_DIR}pids/unicorn.pid"
 
 
 source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
 echo "Current Ruby version: `ruby --version`"
 
 echo "Stopping Unicorn..."
-cat "${UNICORN_DIR}pids/unicorn.pid" | xargs kill -QUIT
+if [ -e $UPIDFILE ]; then
+    cat "$UPIDFILE" | xargs kill -QUIT
+fi
+
 rm -rf "${UNICORN_DIR}sockets/unicorn.socket"
 rm -rf "${UNICORN_DIR}pids/unicorn.pid"
 
