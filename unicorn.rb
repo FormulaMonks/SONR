@@ -1,9 +1,8 @@
 # set path to app that will be used to configure unicorn,
 # note the trailing slash in this example
-@dir = ENV['OPENSHIFT_DATA_DIR'] + "unicorn"
+@dir = ENV['OPENSHIFT_DATA_DIR'] + "unicorn/"
 working_directory(ENV['OPENSHIFT_REPO_DIR'])
 worker_processes 2
-working_directory @dir
 
 timeout 30
 
