@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'redis'
 
-configure :production do
+configure do
     REDIS_HOST = ENV['OPENSHIFT_REDIS_HOST']
     REDIS_PORT = ENV['OPENSHIFT_REDIS_PORT']
     REDIS_PW = ENV['REDIS_PASSWORD']
