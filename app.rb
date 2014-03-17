@@ -2,7 +2,7 @@ require 'sinatra'
 require 'redis'
 
 
-configure do
+configure :production do
   puts "About to configure redis with #{ENV[REDIS_URL]}"
   REDIS = Redis.new()
   puts "Redis is configured"
