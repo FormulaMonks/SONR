@@ -2,6 +2,7 @@
 
 echo "About to configure environment variables"
 
+# We unset GEM_* because OpenShift/RedHat sets one of them, and that makes rbenv install gems in the wrong directory.
 unset GEM_HOME
 unset GEM_PATH
 
