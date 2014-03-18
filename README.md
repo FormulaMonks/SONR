@@ -78,7 +78,7 @@ git merge github/master -s recursive -X theirs
 git push origin master
 ```
 
-That last step will take a LOOOOOOOOONG time, as you're compiling Ruby and Nginx on your OpenShift gear.
+That last step will take a LOOOOOOOOONG time, as you're compiling Ruby and Nginx on your OpenShift gear. (About 34 minutes when I did it.)
 
 The "rhc app create" command should have output the URL to access your application via the web.
 
