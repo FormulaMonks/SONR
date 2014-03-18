@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 RBENV_TAG="v0.4.0"
 RBENV_DIR="${OPENSHIFT_BUILD_DEPENDENCIES_DIR}.rbenv/"
 RBENV_GIT_URL="https://github.com/sstephenson/rbenv.git"
@@ -20,7 +22,7 @@ PCRE_EXT=".tar.bz2"
 UNICORN_DIR="${OPENSHIFT_DATA_DIR}/unicorn/"
 
 echo "Running build script..."
-
+set +e
 # Install or update RBENV
 if [ -d $RBENV_DIR ]; then
     echo "RBENV has already been installed. Updating it..."
@@ -71,10 +73,13 @@ else
     echo "About to install bundler..."
     gem install bundler
 fi
-
 cd $OPENSHIFT_REPO_DIR
+env | grep -i gem
+env | grep -i rbenv
+env | grep -i ruby
+set -e
 bundle install
-
+set +e
 
 # Install nginx
 # Inspired by https://www.openshift.com/blogs/lightweight-http-serving-using-nginx-on-openshift
