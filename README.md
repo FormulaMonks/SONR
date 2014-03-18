@@ -12,7 +12,7 @@ By John Mark Schofield (<a href="mailto:jms@schof.org">jms@schof.org</a>) for [C
 * The Sinatra / Nginx / Unicorn config is based on [http://recipes.sinatrarb.com/p/deployment/nginx_proxied_to_unicorn](http://recipes.sinatrarb.com/p/deployment/nginx_proxied_to_unicorn).
 * I used additional information on setting up Nginx on OpenShift from here: [https://www.openshift.com/blogs/lightweight-http-serving-using-nginx-on-openshift](https://www.openshift.com/blogs/lightweight-http-serving-using-nginx-on-openshift).
 * I use [rbenv](http://rbenv.org/) to install a more-modern version of Ruby than OpenShift provides.
-* It's awesome that [Citrusbyte](https://citrusbyte.com/) paid me to work on this. (We're hiring, and it's an great place to work.)
+* It's awesome that [Citrusbyte](https://citrusbyte.com/) paid me to work on this. (We're hiring, and it's a great place to work.)
 
 ## Introduction
 This readme takes you from absolute zero (a plain-vanilla OS X installation) to having your first OpenShift application up and running. If your system is set up for OpenShift or for Ruby development in OS X, you'll be able to skip some or all of these steps.
