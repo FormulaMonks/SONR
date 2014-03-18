@@ -73,11 +73,18 @@ Enter your RedHat OpenShift username and password. Enter "Yes" to generate a tok
 Now you're ready to create your application and add the Redis cartridge!
 
 ```
-rhc app create APPNAME diy-0.1 http://cartreflect-claytondev.rhcloud.com/reflect?github=smarterclayton/openshift-redis-cart --from-code https://github.com/citrusbyte/SONR.git
+rhc app create APPNAME diy-0.1 http://cartreflect-claytondev.rhcloud.com/reflect?github=smarterclayton/openshift-redis-cart
 cd APPNAME
+git remote add github -f https://github.com/citrusbyte/SONR.git
+git merge github/master -s recursive -X theirs
+git push origin master
 ```
 
-The "rhc app create" command should have output the URL to access your application on OpenShift.
+That last step will take a LOOOOOOOOONG time, as you're compiling Ruby and Nginx on your OpenShift gear, which isn't all that fast.
+
+The "rhc app create" command should have output the URL to access your application via the web.
+
+## Updating Your OpenShift Application
 
 Now let's make a trivial change just to see how the process works. Edit app.rb and in the "/" stanza, change the first line to "The time where this OpenShift server lives is" -- add the word "OpenShift".
 
