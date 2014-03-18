@@ -19,8 +19,7 @@ This readme takes you from absolute zero (a plain-vanilla OS X installation) to 
 
 These steps have been tested with a fresh install of OS X Mavericks 10.9.2.
 
-You can view a running version of this code at [http://oce-schof.rhcloud.com/](http://oce-schof.rhcloud.com/).
-
+You can view a running version of this code at [http://sonr-schof.rhcloud.com/](http://sonr-schof.rhcloud.com/).
 
 ## Pre-Requisites
 1. You will need an OpenShift account. Create one at [https://www.openshift.com/app/account/new](https://www.openshift.com/app/account/new). If you already have an OpenShift account, verify that you can log in: [https://openshift.redhat.com/app/login](https://openshift.redhat.com/app/login).
