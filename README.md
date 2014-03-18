@@ -9,10 +9,10 @@ By John Mark Schofield (<a href="mailto:jms@schof.org">jms@schof.org</a>) for [C
 * This QuickStart is based in part on the [OpenShift Sinatra Example](https://github.com/openshift/sinatra-example).
 * To add Redis to our OpenShift Gear, I use the [Redis OpenShift Cart](https://github.com/smarterclayton/openshift-redis-cart).
 * This QuickStart is based on the [OpenShift "DIY" cartridge](https://github.com/openshift/origin-server/tree/master/cartridges/openshift-origin-cartridge-diy/README.md).
-* I based our Sinatra / Nginx / Unicorn config on [http://recipes.sinatrarb.com/p/deployment/nginx_proxied_to_unicorn](http://recipes.sinatrarb.com/p/deployment/nginx_proxied_to_unicorn).
+* The Sinatra / Nginx / Unicorn config is based on [http://recipes.sinatrarb.com/p/deployment/nginx_proxied_to_unicorn](http://recipes.sinatrarb.com/p/deployment/nginx_proxied_to_unicorn).
 * I used additional information on setting up Nginx on OpenShift from here: [https://www.openshift.com/blogs/lightweight-http-serving-using-nginx-on-openshift](https://www.openshift.com/blogs/lightweight-http-serving-using-nginx-on-openshift).
 * I use [rbenv](http://rbenv.org/) to install a more-modern version of Ruby than OpenShift provides.
-* It's awesome that [Citrusbyte](https://citrusbyte.com/) paid me to work on this. [We're hiring, BTW](https://citrusbyte.com/contact-us).
+* It's awesome that [Citrusbyte](https://citrusbyte.com/) paid me to work on this. (We're hiring, and it's an great place to work.)
 
 ## Introduction
 This readme takes you from absolute zero (a plain-vanilla OS X installation) to having your first OpenShift application up and running. If your system is set up for OpenShift or for Ruby development in OS X, you'll be able to skip some or all of these steps.
@@ -69,7 +69,7 @@ Enter your RedHat OpenShift username and password. Enter "Yes" to generate a tok
 
 
 ## Creating an OpenShift Application
-Now you're ready to create your application and add the Redis cartridge!
+Now you're ready to create your application and add the Redis cartridge! (Replace APPNAME with the desired name of your application.)
 
 ```
 rhc app create APPNAME diy-0.1 http://cartreflect-claytondev.rhcloud.com/reflect?github=smarterclayton/openshift-redis-cart
