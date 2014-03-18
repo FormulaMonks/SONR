@@ -1,0 +1,22 @@
+# This should be sourced from other scripts, not called directly.
+
+echo "About to configure environment variables"
+
+# Fix a getcwd error on build
+cd ${OPENSHIFT_REPO_DIR}
+
+# We unset GEM_* because OpenShift/RedHat sets one of them, and that makes rbenv install gems in the wrong directory.
+unset GEM_HOME
+unset GEM_PATH
+
+export RBENV_ROOT="${OPENSHIFT_BUILD_DEPENDENCIES_DIR}.rbenv"
+export PATH="$RBENV_ROOT/bin:$PATH"
+eval "$(rbenv init -)"
+rbenv rehash
+
+rbenv global `cat $OPENSHIFT_REPO_DIR/.ruby-version`
+
+# Configure Redis URL
+: ${REDIS_PASSWORD:?"You need to install the Redis cartridge (password)"}
+: ${OPENSHIFT_REDIS_PORT:?"You need to install the Redis cartridge (port)"}
+: ${OPENSHIFT_REDIS_HOST:?"You need to install the Redis cartridge (host)"}
