@@ -1,6 +1,6 @@
 # Sinatra Openshift Nginx Redis
 
-An OpenShift QuickStart for Ruby + Sinatra + Nginx + Redis
+An [OpenShift](https://www.openshift.com/) [QuickStart](https://www.openshift.com/quickstarts) for [Ruby](https://www.ruby-lang.org/en/) + [Sinatra](http://www.sinatrarb.com/) + [Nginx](http://nginx.org/en/) + [Redis](http://redis.io/)
 
 By John Mark Schofield (<a href="mailto:jms@schof.org">jms@schof.org</a>) for [Citrusbyte, LLC](https://citrusbyte.com/).
 
