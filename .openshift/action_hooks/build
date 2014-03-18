@@ -73,11 +73,10 @@ else
     echo "About to install bundler..."
     gem install bundler
 fi
-cd $OPENSHIFT_REPO_DIR
-env | grep -i gem
-env | grep -i rbenv
-env | grep -i ruby
 set -e
+cd $OPENSHIFT_REPO_DIR
+# source configenv again because we want to do an "rbenv rehash" after installing bundler.
+source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
 bundle install
 set +e
 

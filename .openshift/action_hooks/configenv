@@ -2,10 +2,6 @@
 
 echo "About to configure environment variables"
 
-date >> ${OPENSHIFT_DATA_DIR}environment.log
-env >> ${OPENSHIFT_DATA_DIR}environment.log
-echo "---------------------------------" >> ${OPENSHIFT_DATA_DIR}environment.log
-
 # Fix a getcwd error on build
 cd ${OPENSHIFT_REPO_DIR}
 
