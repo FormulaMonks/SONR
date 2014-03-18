@@ -63,6 +63,18 @@ else
 fi
 
 
+echo "Install Gems..."
+source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
+if gem list | grep -q "bundler" ; then
+    echo "Bundler already installed"
+else
+    echo "About to install bundler..."
+    gem install bundler
+fi
+
+cd $OPENSHIFT_REPO_DIR
+bundle install
+
 
 # Install nginx
 # Inspired by https://www.openshift.com/blogs/lightweight-http-serving-using-nginx-on-openshift
@@ -109,13 +121,4 @@ mkdir -p ${UNICORN_DIR}sockets
 mkdir -p ${UNICORN_DIR}pids
 mkdir -p ${UNICORN_DIR}log
 
-echo "Install Gems..."
-source ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/configenv
-if gem list | grep -q "bundler" ; then
-    echo "Bundler already installed"
-else
-    gem install bundler
-fi
-cd $OPENSHIFT_REPO_DIR
-bundle install
 
