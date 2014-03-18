@@ -4,8 +4,6 @@ An OpenShift QuickStart for Ruby + Sinatra + Nginx + Redis
 
 By John Mark Schofield (<a href="mailto:jms@schof.org">jms@schof.org</a>) for [Citrusbyte, LLC](https://citrusbyte.com/).
 
-Copyright 2014 Citrusbyte, LLC.
-
 
 ## Thanks
 * This QuickStart is based in part on the [OpenShift Sinatra Example](https://github.com/openshift/sinatra-example).
