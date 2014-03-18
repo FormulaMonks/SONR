@@ -7,11 +7,11 @@ By John Mark Schofield (<a href="mailto:jms@schof.org">jms@schof.org</a>) for [C
 
 ## Thanks
 * This QuickStart is based in part on the [OpenShift Sinatra Example](https://github.com/openshift/sinatra-example).
-* To add Redis to our OpenShift Gear, we use the [Redis OpenShift Cart](https://github.com/smarterclayton/openshift-redis-cart).
+* To add Redis to our OpenShift Gear, I use the [Redis OpenShift Cart](https://github.com/smarterclayton/openshift-redis-cart).
 * This QuickStart is based on the [OpenShift "DIY" cartridge](https://github.com/openshift/origin-server/tree/master/cartridges/openshift-origin-cartridge-diy/README.md).
-* We based our Sinatra / Nginx / Unicorn config on [http://recipes.sinatrarb.com/p/deployment/nginx_proxied_to_unicorn](http://recipes.sinatrarb.com/p/deployment/nginx_proxied_to_unicorn).
-* We used additional information on setting up Nginx on OpenShift from here: [https://www.openshift.com/blogs/lightweight-http-serving-using-nginx-on-openshift](https://www.openshift.com/blogs/lightweight-http-serving-using-nginx-on-openshift).
-* We use [rbenv](http://rbenv.org/) to install a more-modern version of Ruby than OpenShift provides.
+* I based our Sinatra / Nginx / Unicorn config on [http://recipes.sinatrarb.com/p/deployment/nginx_proxied_to_unicorn](http://recipes.sinatrarb.com/p/deployment/nginx_proxied_to_unicorn).
+* I used additional information on setting up Nginx on OpenShift from here: [https://www.openshift.com/blogs/lightweight-http-serving-using-nginx-on-openshift](https://www.openshift.com/blogs/lightweight-http-serving-using-nginx-on-openshift).
+* I use [rbenv](http://rbenv.org/) to install a more-modern version of Ruby than OpenShift provides.
 * It's awesome that [Citrusbyte](https://citrusbyte.com/) paid me to work on this. [We're hiring, BTW](https://citrusbyte.com/contact-us).
 
 ## Introduction
