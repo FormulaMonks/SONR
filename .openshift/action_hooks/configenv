@@ -2,6 +2,9 @@
 
 echo "About to configure environment variables"
 
+# Fix a getcwd error on build
+cd ${OPENSHIFT_BUILD_DEPENDENCIES_DIR}
+
 # We unset GEM_* because OpenShift/RedHat sets one of them, and that makes rbenv install gems in the wrong directory.
 unset GEM_HOME
 unset GEM_PATH
